@@ -30,9 +30,17 @@ tl.to(".contact-socials h1", {
     y: "30px",
     stagger: 0.1
 }, "-=1");
+tl.to(".contact-direct button", {
+    opacity: 1,
+    stagger: 0.1
+}, "-=1");
+tl.to(".contacts-divider-line", {
+    opacity: 1,
+    scale: 1,
+    rotate: -45
+}, "-=1");
 contactBar.addEventListener("click", ()=>{
     tl.play();
-    console.log(white);
 });
 closeBtn.addEventListener("click", ()=>{
     tl.reverse(0.6);
