@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Syne:wght@700;800&family=Urbanist:wght@100;300;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Syne:wght@700;800&family=Urbanist:wght@100;400;900&display=swap');
 
 * {
   margin: 0;
@@ -12,6 +12,35 @@ body {
   overflow-x: hidden;
 }
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > img {
+    width: 300px;
+  }
+
+  &.hidden {
+    animation: fadeOut 0.2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    // display: none;
+  }
+}
 .contact-section {
   z-index: 10;
   position: fixed;
@@ -31,7 +60,7 @@ body {
     text-orientation: sideways;
 
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     height: 100vh;
 
@@ -50,8 +79,8 @@ body {
 
         .contact-bold {
           font-weight: 900;
-          -webkit-text-stroke: 1px rgb(255, 255, 255);
-          -webkit-text-fill-color: transparent;
+          // -webkit-text-stroke: 1px rgb(255, 255, 255);
+          // -webkit-text-fill-color: transparent;
         }
 
         .contact-dot {
@@ -60,6 +89,17 @@ body {
         }
       }
     }
+  }
+}
+
+.logo {
+  position: absolute;
+  left: 200;
+  top: 40;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(0.7) rotate(45deg);
   }
 }
 
@@ -114,7 +154,16 @@ nav {
       font-family: 'Syne', sans-serif;
     }
 
-    .hero-heading {
+    .hero-heading-div {
+      position: relative;
+      height: 115px;
+    }
+
+    .hero-heading-1,
+    .hero-heading-2,
+    .hero-heading-3 {
+      position: absolute;
+      font-family: 'Syne', sans-serif;
       overflow: hidden;
       display: inline-block;
       font-size: 100px;
@@ -182,16 +231,18 @@ nav {
       font-family: 'Syne', sans-serif;
       border: 2px solid white;
       transition: background-color 0.2s;
+      position: relative;
 
       &:hover {
         background-color: white;
         cursor: pointer;
       }
       &:hover::after {
-        content: 'click to copy';
+        content: attr(data-value);
         color: black;
         width: 100%;
-        // position: absolute;
+        position: absolute;
+        left: 10;
         // left: 50%;
         // transform: translateY(-50%);
         // left: -40%;
@@ -227,9 +278,35 @@ nav {
   }
 
   &-headings {
+    position: relative;
+    // margin: 20px 0 20px 200px;
     padding: 20px 0;
     font-size: 70px;
     margin-left: 200px;
+
+    span {
+      position: absolute;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      text-shadow: none;
+      color: white;
+      -webkit-text-stroke: 0px white;
+      -webkit-text-fill-color: white;
+      background-color: rgba(white, 0.2);
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    .work-label {
+      &-kk,
+      &-pc,
+      &-dh,
+      &-cs {
+        opacity: 0;
+      }
+    }
+
     h1 {
       display: inline-block;
       padding: 20px 0;
@@ -244,7 +321,7 @@ nav {
   }
 
   &-designs {
-    background-color: aliceblue;
+    background-color: white;
     width: 100%;
     padding: 50px 0px;
 
@@ -255,6 +332,15 @@ nav {
       justify-content: space-evenly;
     }
   }
+}
+
+.contacts-divider-line {
+  opacity: 0;
+  height: 2px;
+  width: 80vh;
+  transform: scale(0);
+  background-color: white;
+  position: fixed;
 }
 
 .contact {
@@ -270,6 +356,9 @@ nav {
   justify-content: space-around;
   align-items: center;
   // display: none;
+  &-socials {
+    transform: translateY(-40%);
+  }
 
   &-white-bg {
     position: fixed;
@@ -295,6 +384,7 @@ nav {
 
     &:hover {
       cursor: pointer;
+      // background-color: black;
     }
   }
 
@@ -308,44 +398,43 @@ nav {
         font-weight: 800;
         text-decoration: none;
         display: inline-block;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 1px white;
+        text-shadow: -0px -0px 0 rgb(255, 255, 255);
+        transition: text-shadow 0.2s ease;
+        &:hover {
+          text-shadow: -6px -3px 0 rgb(255, 255, 255);
+          -webkit-text-stroke: 1px white;
+        }
       }
     }
     #insta a {
       letter-spacing: 8px;
-      -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 1px white;
-      text-shadow: -0px -0px 0 rgb(255, 255, 255);
-      transition: text-shadow 0.2s ease;
-      &:hover {
-        text-shadow: -6px -3px 0 rgb(255, 255, 255);
-        -webkit-text-stroke: 1px white;
-      }
     }
     #wapp a {
       letter-spacing: 5px;
-      color: #25d366;
-    }
-    #fb a {
-      letter-spacing: -3px;
-      color: #006aff;
     }
     #drib a {
-      color: #ea4c89;
+      letter-spacing: 6px;
+    }
+    #link a {
+      letter-spacing: 2px;
     }
     #twitt a {
       letter-spacing: -5px;
-      color: #1da1f2;
-    }
-    #git a {
-      color: #333333;
     }
   }
 
   &-direct {
+    transform: translate(-60%, 40%);
     button {
+      position: relative;
+      opacity: 0;
+      display: block;
+      margin: 40px 0;
       font-size: 18px;
       color: white;
-      padding: 20px 0px;
+      padding: 35px 40px;
       width: 300px;
       border-radius: 50px;
       background-color: transparent;
@@ -355,6 +444,15 @@ nav {
       &:hover {
         background-color: white;
         color: black;
+        &::after {
+          // content: 'Click to copy';
+          content: attr(data-value);
+          color: black;
+          background-color: white;
+          width: 100%;
+          position: absolute;
+          left: 0;
+        }
       }
     }
   }
@@ -409,10 +507,14 @@ nav {
     }
 
     textarea {
+      padding: 10px 0;
+      font-size: 18px;
+      letter-spacing: 1px;
       color: white;
       border-top-style: hidden;
       border-left-style: hidden;
       border-right-style: hidden;
+      border-bottom: 1px solid white;
       width: 500px;
       background-color: transparent;
       resize: none;
@@ -446,25 +548,6 @@ nav {
   }
 }
 
-// #insta a {
-//   color: #fbad50;
-// }
-// #wapp a {
-//   color: #25d366;
-// }
-// #fb a {
-//   color: #006aff;
-// }
-// #drib a {
-//   color: #ea4c89;
-// }
-// #twitt a {
-//   color: #1da1f2;
-// }
-// #git a {
-//   color: #333333;
-// }
-
 .header {
   background-color: black;
   color: white;
@@ -482,8 +565,12 @@ nav {
     position: absolute;
     top: 5%;
     right: 10%;
+    transition: 0.2s ease;
+    transition-property: filter, scale;
 
     &:hover {
+      scale: 0.9;
+      filter: drop-shadow(0px 15px 50px rgba(0, 0, 0, 0.1));
       cursor: pointer;
     }
   }
@@ -565,6 +652,10 @@ nav {
   background-color: #f8cc19;
   padding: 100px 200px;
 
+  &-section {
+    margin-bottom: 50px;
+  }
+
   h1 {
     width: 900px;
     font-size: 80px;
@@ -578,10 +669,11 @@ nav {
   }
   p {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 25px;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    max-width: 95%;
+    margin: 0 auto 20px auto;
   }
 }
 
@@ -593,14 +685,41 @@ nav {
     top: 10%;
     left: 70%;
   }
+
+  .dh-hero-2 {
+    position: absolute;
+    top: -10%;
+    left: 75%;
+  }
 }
 
 .case-padding {
   height: 400px;
 }
 
+.dh-case-padding {
+  height: 200px;
+}
+
+.pn-case-padding {
+  height: 150px;
+}
+
 .header-kk {
   background-color: #43bccd;
+  padding-bottom: 500px;
+}
+
+.header-dh {
+  background-color: #da0037;
+  padding-bottom: 500px;
+}
+.header-cs {
+  background-color: #6c63ef;
+  padding-bottom: 500px;
+}
+.header-pn {
+  background-color: #08baf5;
   padding-bottom: 500px;
 }
 
@@ -610,10 +729,58 @@ nav {
   background-color: white;
   // max-width: 1440px;
   margin: 0 auto;
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    margin: 20px 0;
+    text-transform: uppercase;
+    width: 80%;
+  }
+  ul li {
+    font-size: 20px;
+    width: 80%;
+    margin: 10px auto;
+    letter-spacing: 1px;
+    line-height: 25px;
+  }
+
+  h4 {
+    max-width: 95%;
+    margin: 0 auto 20px auto;
+  }
+  video {
+    display: flex;
+    margin: 30px auto;
+  }
+}
+
+.pn-services-video {
+  width: 700px;
 }
 
 .case-image {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin: 30px 0;
+}
+
+.scroll-to-top {
+  text-align: center;
+  font-size: 38px;
+  transform: rotate(-90deg);
+  background-color: orange;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  z-index: 1000000;
+  bottom: 20;
+  right: 20;
+  border-radius: 50%;
+  display: none;
+  &:hover {
+    cursor: pointer;
+  }
 }

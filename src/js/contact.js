@@ -24,10 +24,11 @@ tl.to('.contact-white-bg', { clipPath: 'circle(100%)' }, '<-.2');
 // tl.to('.contact-white-bg', { opacity: 0 });
 tl.to('.contact', { clipPath: 'circle(100%)' }, '-=.8');
 tl.to('.contact-socials h1', { opacity: 1, y: '30px', stagger: 0.1 }, '-=1');
+tl.to('.contact-direct button', { opacity: 1, stagger: 0.1 }, '-=1');
+tl.to('.contacts-divider-line', { opacity: 1, scale: 1, rotate: -45 }, '-=1');
 
 contactBar.addEventListener('click', () => {
   tl.play();
-  console.log(white);
 });
 
 closeBtn.addEventListener('click', () => {
