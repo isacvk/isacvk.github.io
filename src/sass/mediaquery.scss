@@ -1,0 +1,37 @@
+// @media only screen and (max-width: 1472px) {
+@media only screen and (max-width: 1555px) {
+  * {
+    font-size: 9px;
+  }
+  .case-hero-pic {
+    // transform: scale(0.8);
+    position: absolute;
+    left: 0;
+    // &-1 {
+    //   width: 90%;
+    // }
+    // &-2 {
+    //   width: 30%;
+    // }
+  }
+  .dh-case-padding {
+    height: 50px;
+  }
+}
+
+@media only screen and (max-width: 1225px) {
+  * {
+    font-size: 8px;
+  }
+  .case-hero-pic {
+    // &-1 {
+    //   width: 90%;
+    // }
+    // &-2 {
+    //   width: 30%;
+    // }
+    // transform: scale(0.4);
+    position: absolute;
+    left: 0;
+  }
+}
