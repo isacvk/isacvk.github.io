@@ -4,8 +4,7 @@
   }
 
   .case-hero-pic {
-    position: absolute;
-    left: 0;
+    position: relative;
   }
 
   .dh-case-padding {
@@ -19,7 +18,7 @@
   }
 
   .case-hero-pic {
-    position: absolute;
+    position: relative;
     left: 0;
   }
 }
