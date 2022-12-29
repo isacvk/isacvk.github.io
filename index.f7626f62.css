@@ -554,8 +554,11 @@ nav ul li a {
 
 .header {
   color: #fff;
+  padding: 18rem 20rem 5rem;
+}
+
+.header-aboutus {
   background-color: #000;
-  padding: 150px 200px;
 }
 
 .header h1 {
@@ -630,7 +633,7 @@ nav ul li a {
 
 .story {
   background-color: #f8cc19;
-  padding: 10rem 20rem;
+  padding: 5rem 20rem;
 }
 
 .story-section {
@@ -660,13 +663,15 @@ nav ul li a {
 }
 
 .case-hero-pic {
-  position: absolute;
+  padding-top: 5rem;
+  position: relative;
 }
 
 .case-hero-pic-2 {
+  display: inline-block;
   position: absolute;
-  top: 10%;
-  left: 70%;
+  top: 20%;
+  left: 50%;
 }
 
 .case-hero-pic .dh-hero-2 {
@@ -687,30 +692,40 @@ nav ul li a {
   height: 150px;
 }
 
-.header-kk {
+.header-bg {
+  z-index: -1;
+  height: 90vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header-bg-about {
+  background-color: #000;
+}
+
+.header-bg-kk {
   background-color: #43bccd;
-  padding-bottom: 500px;
 }
 
-.header-dh {
+.header-bg-dh {
   background-color: #da0037;
-  padding-bottom: 500px;
 }
 
-.header-cs {
+.header-bg-cs {
   background-color: #6c63ef;
-  padding-bottom: 500px;
 }
 
-.header-pn {
+.header-bg-pn {
   background-color: #08baf5;
-  padding-bottom: 500px;
 }
 
 .desc-sec {
   background-color: #fff;
   flex-direction: column;
   margin: 0 auto;
+  padding-top: 0;
 }
 
 .desc-sec h2 {
