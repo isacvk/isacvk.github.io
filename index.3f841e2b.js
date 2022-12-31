@@ -58,5 +58,13 @@ titleDH.addEventListener("mouseenter", ()=>{
 titleDH.addEventListener("mouseleave", ()=>{
     labelDH.style.opacity = "0";
 });
+const labelHB = document.querySelector(".work-label-hb");
+const titleHB = document.querySelector(".work-title-hb");
+titleHB.addEventListener("mouseenter", ()=>{
+    labelHB.style.opacity = "1";
+});
+titleHB.addEventListener("mouseleave", ()=>{
+    labelHB.style.opacity = "0";
+});
 
 //# sourceMappingURL=index.3f841e2b.js.map
