@@ -826,6 +826,10 @@ nav ul li a {
   transform: scale(.8);
 }
 
+.soc-media-post {
+  justify-content: space-between;
+}
+
 .scroll-to-top {
   text-align: center;
   width: 50px;
