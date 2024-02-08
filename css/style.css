@@ -432,6 +432,7 @@ iframe{
   align-items: center !important;
   justify-content: center !important;
   display: none;
+  flex-direction: column;
 }
 
 .image-display-container img{
@@ -665,4 +666,19 @@ iframe{
   .port-nav-links-mobile-container{
     display: block;
   }
+}
+
+.fancybox:hover{
+  cursor: pointer;
+}
+
+.image-close-icon{
+  width: 6% !important;
+  height: fit-content !important;
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.image-close-icon:hover{
+  cursor: pointer;
 }

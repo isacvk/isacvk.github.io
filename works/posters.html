@@ -34,56 +34,51 @@
 
     <!-- Template Main CSS File -->
     <link href="./../css/style.css" rel="stylesheet" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function(){
-
-        $('.work-info').click(function(){
-          console.log("img");
-          // console.log($(this).siblings("img").attr('src'));
-        });
-
+      $(document).ready(function () {
         // Makes the clicked image full screen (uses a <div> with a background image)
-        $('.work-info').click(function(){
-          
+        $(".fancybox").click(function () {
           // Prevents scrolling
-          $('body').addClass('scroll-disabled');
-          
+          $("body").addClass("scroll-disabled");
+
           // Optional: Enables pinch and zoom
           // $('meta[name=viewport]').attr('content','width = device-width, initial-scale = 1.00, minimum-scale = 1.00, maximum-scale = 2.00, user-scalable=yes');
-          
+
           // Get image path source
-          let imagePath = $(this).siblings("img").prop('src');
+          //let imagePath = $(this).siblings("img").prop('src');
+          let imagePath = $(this).children("img").prop("src");
+          imagePath = imagePath.split(".");
+          imagePath.splice(imagePath.length - 1, 0, "Final");
+          imagePath = imagePath.join(".");
           console.log(imagePath);
-          
+
           // Set image path source
-          // $('.image-display-container').attr('style','background-image: url(' + imagePath + ')');
-          $('.img-placeholder').attr('src',imagePath);
-          $('.background-popup-container').attr('style','display:flex !important');
-          $('.image-display-container').attr('style','display:flex !important');
-          
+          $(".img-placeholder").attr("src", imagePath);
+          $(".background-popup-container").attr(
+            "style",
+            "display:flex !important"
+          );
+          $(".image-display-container").attr(
+            "style",
+            "display:flex !important"
+          );
+
           // Show background
-          $('.background-popup-container').fadeIn();
+          $(".background-popup-container").fadeIn();
           // Show image
-          $('.image-display-container').fadeIn();
-          
+          $(".image-display-container").fadeIn();
+          $(".image-close-icon").fadeIn();
         });
 
-        $('.background-popup-container').click(function(){
-
+        $(".image-close-icon").click(function () {
           // Enables scrolling again
-          $('body').removeClass('scroll-disabled');
-
-          // Optional: Disables pinch and zoom
-          // $('meta[name=viewport]').attr('content','width = device-width, initial-scale = 1.00, minimum-scale = 1.00, maximum-scale = 1.00');
-
+          $("body").removeClass("scroll-disabled");
           // Hide background
-          $('.background-popup-container').fadeOut();
-          // Hide image
-          $('.image-display-container').fadeOut();
+          $(".background-popup-container").fadeOut();
         });
-        
-      }); 
+      });
     </script>
 
     <!-- JavaScript File -->
@@ -93,6 +88,7 @@
   <body>
     <div class="background-popup-container">
       <div class="image-display-container">
+        <img class="image-close-icon" src="/img/close-icon.svg" alt="" />
         <img class="img-placeholder" alt="Project Image" />
       </div>
     </div>
@@ -109,11 +105,8 @@
           <li><a href="/index.html#contact-sec">Contact</a></li>
         </ul>
 
-        <a
-          class="burger"
-          id="port-hamburger"
-        >
-        <span></span>
+        <a class="burger" id="port-hamburger">
+          <span></span>
         </a>
 
         <ul class="port-nav-links-mobile-container hidden">
