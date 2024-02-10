@@ -38,54 +38,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       $(document).ready(function () {
-        // Makes the clicked image full screen (uses a <div> with a background image)
+        let isMouseDown = false;
+
+        // When thumbnail is clicked
         $(".fancybox").click(function () {
-          // Prevents scrolling
-          $("body").addClass("scroll-disabled");
+            $("body").addClass("scroll-disabled");
 
-          // Optional: Enables pinch and zoom
-          // $('meta[name=viewport]').attr('content','width = device-width, initial-scale = 1.00, minimum-scale = 1.00, maximum-scale = 2.00, user-scalable=yes');
+            // Get image path source
+            let imagePath = $(this).children("img").prop("src");
+            imagePath = imagePath.split(".");
+            imagePath.splice(imagePath.length - 1, 0, "Final");
+            imagePath = imagePath.join(".");
 
-          // Get image path source
-          //let imagePath = $(this).siblings("img").prop('src');
-          let imagePath = $(this).children("img").prop("src");
-          imagePath = imagePath.split(".");
-          imagePath.splice(imagePath.length - 1, 0, "Final");
-          imagePath = imagePath.join(".");
-          console.log(imagePath);
-
-          // Set image path source
-          $(".img-placeholder").attr("src", imagePath);
-          $(".background-popup-container").attr(
-            "style",
-            "display:flex !important"
-          );
-          $(".image-display-container").attr(
-            "style",
-            "display:flex !important"
-          );
-
-          // Show background
-          $(".background-popup-container").fadeIn();
-          // Show image
-          $(".image-display-container").fadeIn();
-          $(".image-close-icon").fadeIn();
+            // Set initial image path source
+            $(".img-placeholder").attr("src", imagePath);
+            $(".background-popup-container").fadeIn();
+            $(".image-display-container").fadeIn();
+            $(".image-close-icon").fadeIn();
+            $(".hover-message").fadeIn().delay(3000).fadeOut();
         });
 
+        // When mouse is pressed down on the image
+        $(".image-display-container").on('mousedown', function() {
+            isMouseDown = true;
+            let beforeImagePath = $(".img-placeholder").attr("src").replace("Final", "Before");
+            $(".img-placeholder").attr("src", beforeImagePath);
+        });
+
+        // When mouse is released
+        $(document).on('mouseup', function() {
+            isMouseDown = false;
+            let finalImagePath = $(".img-placeholder").attr("src").replace("Before", "Final");
+            $(".img-placeholder").attr("src", finalImagePath);
+        });
+
+        // When mouse leaves the image
+        $(".image-display-container").on('mouseleave', function() {
+            if(isMouseDown) {
+                isMouseDown = false;
+                let finalImagePath = $(".img-placeholder").attr("src").replace("Before", "Final");
+                $(".img-placeholder").attr("src", finalImagePath);
+            }
+        });
+
+        // When close icon is clicked
         $(".image-close-icon").click(function () {
-          // Enables scrolling again
-          $("body").removeClass("scroll-disabled");
-          // Hide background
-          $(".background-popup-container").fadeOut();
+            $("body").removeClass("scroll-disabled");
+            $(".background-popup-container").fadeOut();
         });
-      });
+    });
+
     </script>
 
     <!-- JavaScript File -->
     <script defer src="/js/hamburgerHandler.js"></script>
-  </head>
 
+  </head>
   <body>
+    <div class="background-popup-container">
+      <div class="image-display-container">
+        <div class="hover-message">Press and hold to toggle between before and after images</div>
+        <img class="image-close-icon" src="/img/close-icon.svg" alt="" />
+        <img class="img-placeholder" alt="Project Image" />
+      </div>
+    </div>
     <nav class="navbar navbar-light custom-navbar port-nav-bar">
       <div class="container">
         <a class="navbar-brand" href="/index.html">Isac.vk</a>
