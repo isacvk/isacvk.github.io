@@ -90,7 +90,7 @@
         });
 
         // When close icon is clicked
-        $(".image-close-icon").click(function () {
+        $(".image-close-icon").on("click touchend", function () {
           $("body").removeClass("scroll-disabled");
           $(".background-popup-container").fadeOut();
         });
