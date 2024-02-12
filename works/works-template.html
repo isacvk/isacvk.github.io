@@ -32,67 +32,94 @@
       rel="stylesheet"
     />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Makes the clicked image full screen (uses a <div> with a background image)
+        $(".fancybox").click(function () {
+          // Prevents scrolling
+          $("body").addClass("scroll-disabled");
+
+          // Optional: Enables pinch and zoom
+          // $('meta[name=viewport]').attr('content','width = device-width, initial-scale = 1.00, minimum-scale = 1.00, maximum-scale = 2.00, user-scalable=yes');
+
+          // Get image path source
+          //let imagePath = $(this).siblings("img").prop('src');
+          let imagePath = $(this).children("img").prop("src");
+          imagePath = imagePath.split(".");
+          imagePath.splice(imagePath.length - 1, 0, "Final");
+          imagePath = imagePath.join(".");
+          console.log(imagePath);
+
+          // Set image path source
+          $(".img-placeholder").attr("src", imagePath);
+          $(".background-popup-container").attr(
+            "style",
+            "display:flex !important"
+          );
+          $(".image-display-container").attr(
+            "style",
+            "display:flex !important"
+          );
+
+          // Show background
+          $(".background-popup-container").fadeIn();
+          // Show image
+          $(".image-display-container").fadeIn();
+          $(".image-close-icon").fadeIn();
+        });
+
+        $(".image-close-icon").click(function () {
+          // Enables scrolling again
+          $("body").removeClass("scroll-disabled");
+          // Hide background
+          $(".background-popup-container").fadeOut();
+        });
+      });
+    </script>
+
+    <script defer src="/js/hamburgerHandler.js"></script>
+
     <!-- Template Main CSS File -->
     <link href="./../css/style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
-      <div class="container py-2 py-md-5">
-        <div class="row align-items-start">
-          <div class="col-md-2">
-            <ul class="custom-menu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Me</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li class="active"><a href="works.html">Works</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 d-none d-md-block mr-auto">
-            <div class="tweet d-flex">
-              <span class="icofont-twitter text-white mt-2 mr-3"></span>
-              <div>
-                <p>
-                  <em
-                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam necessitatibus incidunt ut officiis explicabo
-                    inventore. <br />
-                    <a href="#">t.co/v82jsk</a></em
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-none d-md-block">
-            <h3>Hire Me</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              necessitatibus incidunt ut officiis explicabo inventore. <br />
-              <a href="#">myemail@gmail.com</a>
-            </p>
-          </div>
-        </div>
+    <div class="background-popup-container">
+      <div class="image-display-container">
+        <img class="image-close-icon" src="/img/close-icon.svg" alt="" />
+        <img class="img-placeholder" alt="Project Image" />
       </div>
     </div>
 
-    <nav class="navbar navbar-light custom-navbar">
+    <nav class="navbar navbar-light custom-navbar port-nav-bar">
       <div class="container">
-        <a class="navbar-brand" href="./../index.html">MyPortfolio.</a>
+        <a class="navbar-brand" href="./../index.html">Isac.vk</a>
 
-        <a
-          href="#"
-          class="burger"
-          data-toggle="collapse"
-          data-target="#main-navbar"
-        >
+        <ul class="port-nav-links-container">
+          <li class="active"><a href="./../index.html">Home</a></li>
+          <li><a href="./../works.html">Works</a></li>
+          <li><a href="./../services.html">Services</a></li>
+          <li><a href="./../about.html">About Me</a></li>
+          <li><a href="./../contact.html">Contact</a></li>
+        </ul>
+
+        <a class="burger" id="port-hamburger">
           <span></span>
         </a>
+
+        <ul class="port-nav-links-mobile-container hidden">
+          <li class="active"><a href="./../index.html">Home</a></li>
+          <li><a href="./../works.html">Works</a></li>
+          <li><a href="./../services.html">Services</a></li>
+          <li><a href="./../about.html">About Me</a></li>
+          <li><a href="./../contact.html">Contact</a></li>
+        </ul>
       </div>
     </nav>
 
     <main id="main">
-      <div class="site-section">
+      <div class="site-section pb-0">
         <div class="container">
           <div class="row mb-4 align-items-center">
             <div class="col-md-6" data-aos="fade-up">
@@ -188,66 +215,13 @@
           </div>
         </div>
       </div>
-
-      <div class="site-section pb-0">
-        <div class="container">
-          <div class="owl-carousel testimonial-carousel">
-            <div class="testimonial-wrap">
-              <div class="testimonial">
-                <img
-                  src="./../img/person_1.jpg"
-                  alt="Image"
-                  class="img-fluid"
-                />
-                <blockquote>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam necessitatibus incidunt ut officiis explicabo
-                    inventore.
-                  </p>
-                </blockquote>
-                <p>&mdash; Jean Hicks</p>
-              </div>
-            </div>
-
-            <div class="testimonial-wrap">
-              <div class="testimonial">
-                <img
-                  src="./../img/person_2.jpg"
-                  alt="Image"
-                  class="img-fluid"
-                />
-                <blockquote>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam necessitatibus incidunt ut officiis explicabo
-                    inventore.
-                  </p>
-                </blockquote>
-                <p>&mdash; Chris Stanworth</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
 
     <footer class="footer" role="contentinfo">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p class="mb-1">
-              &copy; Copyright MyPortfolio. All Rights Reserved
-            </p>
-            <div class="credits">
-              <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=MyPortfolio
-            -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
+            <p class="mb-1">&copy; Copyright Isac vk. All Rights Reserved</p>
           </div>
           <div class="col-sm-6 social text-md-right">
             <a href="#"><span class="icofont-twitter"></span></a>
